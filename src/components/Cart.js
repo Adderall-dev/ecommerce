@@ -1,30 +1,25 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { clearCart, deleteCartItem } from "../redux/ducks/cart";
+import { useSelector } from "react-redux";
+import { SmCard } from "../style";
+import { Wrapper } from "../style";
+
+import CartItem from "./CartItem";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.cart);
-  const dispatch = useDispatch();
-  return (
-    <div>
-      <h1>cart:</h1>
-      {cartItems.length === 0 ? (
-        <h2>Cart is empty</h2>
-      ) : (
-        <ul>
-          {cartItems.map((cartItem) => (
-            <li key={cartItem.id}>
-              {cartItem.name} - {cartItem.qty}
-              <button onClick={() => dispatch(deleteCartItem(cartItem.id))}>
-                X
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+  const cartItems = useSelector((state) => state.cartReducer.cart);
+  const totalPrice = cartItems
+    .map((item) => item.price)
+    .reduce((a, b) => a + b, 0);
 
-      <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
-    </div>
+  return (
+    <Wrapper>
+      <h1>Cart</h1>
+      {cartItems.length === 0 ? (
+        <SmCard>Cart is empty</SmCard>
+      ) : (
+        <CartItem cartItems={cartItems} totalPrice={totalPrice} />
+      )}
+    </Wrapper>
   );
 };
 

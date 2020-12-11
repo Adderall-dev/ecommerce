@@ -1,43 +1,43 @@
+import shopItems from "../../ShopItems";
+
 const CLEAR_CART = "cart/clearCart";
 const ADD_TO_CART = "cart/addToCart";
 const DELETE_CART_ITEM = "cart/deleteCartItem";
 
 const initialState = {
-  items: [
-    {
-      id: 1,
-      name: "cake",
-      qty: 1,
-    },
-    {
-      id: 2,
-      name: "cookie",
-      qty: 1,
-    },
-    {
-      id: 3,
-      name: "toast",
-      qty: 1,
-    },
-  ],
+  items: shopItems,
   cart: [],
-  amount: 0,
 };
 
-const cart = (state = initialState, { type, payload }) => {
+const cartReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_TO_CART:
+      //save matching item to variable
       const item = state.items.find((prod) => prod.id === payload.id);
+      //check if item is already in cart
       const isInCart = state.cart.find((cartItem) =>
         cartItem.id === payload.id ? true : false
       );
       return {
         ...state,
         cart: isInCart
-          ? state.cart.map((item) =>
-              item.id === payload.id ? { ...item, qty: item.qty + 1 } : item
+          ? //if item is in cart
+            state.cart.map((item) =>
+              //item is equal to payload
+              item.id === payload.id
+                ? //increase qty of item and increase item price
+                  {
+                    ...item,
+                    qty: item.qty + 1,
+                    price:
+                      item.qty < 2
+                        ? item.price * 2
+                        : item.price / item.qty + item.price,
+                  }
+                : item
             )
-          : [...state.cart, { ...item, qty: 1 }],
+          : //if items is not in cart
+            [...state.cart, { ...item, qty: 1 }],
       };
     case DELETE_CART_ITEM:
       return {
@@ -65,4 +65,4 @@ export const clearCart = () => ({
   type: CLEAR_CART,
 });
 
-export default cart;
+export default cartReducer;

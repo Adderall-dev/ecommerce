@@ -1,25 +1,25 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../redux/ducks/cart";
+import { addToCart } from "../redux/ducks/cartReducer";
+import { Btn, LiItem, ShopSmCard, FlexWrapper, Wrapper } from "../style";
 
 const Shop = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.cart.items);
+  const products = useSelector((state) => state.cartReducer.items);
 
   return (
-    <div>
+    <Wrapper>
       <h1>SHOP</h1>
-      <ul>
+      <FlexWrapper>
         {products.map((product) => (
-          <div key={product.id}>
-            <li>{product.name}</li>
-            <button onClick={() => dispatch(addToCart(product))}>
-              Add to cart
-            </button>
-          </div>
+          <ShopSmCard key={product.id}>
+            <LiItem>{product.name}</LiItem>
+            <LiItem>$ {product.price}</LiItem>
+            <Btn onClick={() => dispatch(addToCart(product))}>Add to cart</Btn>
+          </ShopSmCard>
         ))}
-      </ul>
-    </div>
+      </FlexWrapper>
+    </Wrapper>
   );
 };
 

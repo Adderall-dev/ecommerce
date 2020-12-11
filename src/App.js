@@ -5,33 +5,39 @@ import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import { useSelector } from "react-redux";
 import PageNotFound from "./components/PageNotFound";
+import { GlobalStyle } from "./GlobalStyle";
+import { NavBar, MainApp, NavCart } from "./style";
+import { BiCart } from "react-icons/bi";
+import Checkout from "./components/Checkout";
 
 const App = () => {
   const cartItems = useSelector((state) =>
-    state.cart.cart.map((item) => item.qty)
+    state.cartReducer.cart.map((item) => item.qty)
   );
   const cartItemsLength = cartItems.reduce((a, b) => a + b, 0);
   return (
     <Router>
-      <div>
-        <ul>
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="/shop">
-            <li>Shop</li>
-          </Link>
-          <Link to="/cart">
-            <li>Cart ({cartItemsLength})</li>
-          </Link>
-        </ul>
+      <GlobalStyle />
+      <NavBar>
+        <h1>Shop</h1>
+        <Link to="/">Home</Link>
+        <Link to="/shop">Shop</Link>
+        <Link to="/cart">
+          <NavCart>
+            <BiCart />
+            {cartItemsLength === 0 ? null : <div>{cartItemsLength}</div>}
+          </NavCart>
+        </Link>
+      </NavBar>
+      <MainApp>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/shop" component={Shop} />
           <Route path="/cart" component={Cart} />
+          <Route path="/checkout" component={Checkout} />
           <Route path="*" component={PageNotFound} />
         </Switch>
-      </div>
+      </MainApp>
     </Router>
   );
 };

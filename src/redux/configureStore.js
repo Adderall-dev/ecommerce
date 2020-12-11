@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import cart from "./ducks/cart";
+import cartReducer from "./ducks/cartReducer";
 
 const saveToLocalStorage = (state) => {
   try {
@@ -25,7 +25,7 @@ const loadFromLocalStorage = () => {
 const persistedState = loadFromLocalStorage();
 
 const reducer = combineReducers({
-  cart,
+  cartReducer,
 });
 
 const store = createStore(reducer, persistedState, composeWithDevTools());

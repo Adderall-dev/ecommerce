@@ -21,7 +21,7 @@ const Checkout = () => {
         ) : (
           <h2>there is nothing to checkout</h2>
         )}
-        <h4>Total price: ${checkoutItems.total}</h4>
+        <h3>Total price: ${checkoutItems.total}</h3>
       </SmCard>
       <Link to="/pay">
         <Btn

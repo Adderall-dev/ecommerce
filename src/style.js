@@ -10,6 +10,9 @@ export const NavBar = styled.header`
   h1 {
     margin-right: auto;
     color: #d0e8f2;
+    span {
+      color: #79a3b1;
+    }
   }
   a {
     text-decoration: none;

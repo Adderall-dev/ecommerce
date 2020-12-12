@@ -20,7 +20,9 @@ const App = () => {
     <Router>
       <GlobalStyle />
       <NavBar>
-        <h1>Shop</h1>
+        <h1>
+          Food<span>.now</span>
+        </h1>
         <Link to="/">Home</Link>
         <Link to="/shop">Shop</Link>
         <Link to="/cart">

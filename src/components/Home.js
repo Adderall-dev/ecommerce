@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       <h1>Home</h1>
       <p>
-        this is simple shop app, want to try it? Let's go to{" "}
+        This is a simple shop app, want to try it out? Let's{" "}
         <Link to="/shop">shop</Link>:D{" "}
       </p>
     </div>

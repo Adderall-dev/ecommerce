@@ -1,19 +1,19 @@
 const shopItems = [
   {
     id: 1,
-    name: "cake",
+    name: "Cake",
     price: 15,
     qty: 1,
   },
   {
     id: 2,
-    name: "cookie",
+    name: "Cookie",
     price: 2,
     qty: 1,
   },
   {
     id: 3,
-    name: "toast",
+    name: "Toast",
     price: 5,
     qty: 1,
   },

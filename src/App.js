@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import PageNotFound from "./components/PageNotFound";
 import { GlobalStyle } from "./GlobalStyle";
 import { NavBar, MainApp, NavCart } from "./style";
-import { BiCart } from "react-icons/bi";
+import { FaShoppingCart } from "react-icons/fa";
 import Checkout from "./components/Checkout";
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
         <Link to="/shop">Shop</Link>
         <Link to="/cart">
           <NavCart>
-            <BiCart />
+            <FaShoppingCart />
             {cartItemsLength === 0 ? null : <div>{cartItemsLength}</div>}
           </NavCart>
         </Link>

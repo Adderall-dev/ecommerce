@@ -78,6 +78,10 @@ export const FlexWrapper = styled.div`
 `;
 
 export const SmCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: #79a3b1;
   padding: 2em;
   margin: 0.8em;

@@ -3,6 +3,7 @@ import shopItems from "../../ShopItems";
 const CLEAR_CART = "cart/clearCart";
 const ADD_TO_CART = "cart/addToCart";
 const DELETE_CART_ITEM = "cart/deleteCartItem";
+const ADAPT_QTY = "cart/adaptQty";
 
 const initialState = {
   items: shopItems,
@@ -39,6 +40,14 @@ const cartReducer = (state = initialState, { type, payload }) => {
           : //if items is not in cart
             [...state.cart, { ...item, qty: 1 }],
       };
+    case ADAPT_QTY:
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === payload.id ? { ...item, qty: payload.qty } : item
+        ),
+      };
+
     case DELETE_CART_ITEM:
       return {
         ...state,
@@ -54,6 +63,14 @@ const cartReducer = (state = initialState, { type, payload }) => {
 export const addToCart = (product) => ({
   type: ADD_TO_CART,
   payload: product,
+});
+
+export const adaptQty = (id, val) => ({
+  type: ADAPT_QTY,
+  payload: {
+    id,
+    qty: val,
+  },
 });
 
 export const deleteCartItem = (id) => ({

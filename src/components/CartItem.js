@@ -35,7 +35,7 @@ const CartItem = ({ cartItems, totalPrice }) => {
         background="green"
         hoverColor="white"
         hoverBg="Darkgreen"
-        onClick={() => dispatch(checkout(totalPrice))}
+        onClick={() => dispatch(checkout(totalPrice, cartItems))}
       >
         <Link to="/checkout">Checkout</Link>
       </Btn>

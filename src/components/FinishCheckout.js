@@ -6,7 +6,7 @@ import { FaHome } from "react-icons/fa";
 const FinishCheckout = () => {
   return (
     <Wrapper>
-      <h1>We got your order, your'e welcome to pick it up in few minutes!</h1>
+      <h1>You're welcome to pick up your order in a few minutes!</h1>
       <h3>
         forgot something? You can create new order -{" "}
         <Btn>

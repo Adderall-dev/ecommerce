@@ -87,6 +87,7 @@ export const SmCard = styled.div`
   margin: 0.8em;
   border-radius: 2em;
   @media (max-width: 768px) {
+    text-align: center;
     padding: 4em;
     margin: 1em;
     width: 70%;

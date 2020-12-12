@@ -12,22 +12,28 @@ const Checkout = () => {
       <h1>Checkout</h1>
       <SmCard>
         <h3>Selected items:</h3>
-        {checkoutItems.cart.map((item) => (
-          <LiItem key={item.id}>
-            {item.name}, ({item.qty})
-          </LiItem>
-        ))}
+        {checkoutItems.checkoutCart ? (
+          checkoutItems.checkoutCart.map((item) => (
+            <LiItem key={item.id}>
+              {item.name}, ({item.qty})
+            </LiItem>
+          ))
+        ) : (
+          <h2>there is nothing to checkout</h2>
+        )}
+        <h4>Total price: ${checkoutItems.total}</h4>
       </SmCard>
-      <h4>Total price: ${checkoutItems.total}</h4>
-      <Btn
-        color="white"
-        background="green"
-        hoverColor="white"
-        hoverBg="Darkgreen"
-        onClick={() => dispatch(initState())}
-      >
-        <Link to="/pay">Pay</Link>
-      </Btn>
+      <Link to="/pay">
+        <Btn
+          color="white"
+          background="green"
+          hoverColor="white"
+          hoverBg="Darkgreen"
+          onClick={() => dispatch(initState())}
+        >
+          Pay
+        </Btn>
+      </Link>
     </Wrapper>
   );
 };

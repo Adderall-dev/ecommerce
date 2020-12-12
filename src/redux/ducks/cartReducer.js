@@ -45,8 +45,7 @@ const cartReducer = (state = initialState, { type, payload }) => {
     case CHECKOUT:
       return {
         ...state,
-        checkout: { cart: [...state.cart], total: payload },
-        cart: [],
+        checkout: { checkoutCart: payload.items, total: payload.total },
       };
     case DELETE_CART_ITEM:
       return {
@@ -65,9 +64,12 @@ export const addToCart = (product) => ({
   payload: product,
 });
 
-export const checkout = (total) => ({
+export const checkout = (total, items) => ({
   type: CHECKOUT,
-  payload: total,
+  payload: {
+    total,
+    items,
+  },
 });
 
 export const handlePay = () => ({

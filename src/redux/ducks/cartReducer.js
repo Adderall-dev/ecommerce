@@ -1,13 +1,15 @@
 import shopItems from "../../ShopItems";
 
-const CLEAR_CART = "cart/clearCart";
+const INIT_STATE = "cart/initState";
 const ADD_TO_CART = "cart/addToCart";
 const DELETE_CART_ITEM = "cart/deleteCartItem";
-const ADAPT_QTY = "cart/adaptQty";
+const CHECKOUT = "cart/checkout";
+const HANDLE_PAY = "cart/handlePay";
 
 const initialState = {
   items: shopItems,
   cart: [],
+  checkout: {},
 };
 
 const cartReducer = (state = initialState, { type, payload }) => {
@@ -40,20 +42,18 @@ const cartReducer = (state = initialState, { type, payload }) => {
           : //if items is not in cart
             [...state.cart, { ...item, qty: 1 }],
       };
-    case ADAPT_QTY:
+    case CHECKOUT:
       return {
         ...state,
-        cart: state.cart.map((item) =>
-          item.id === payload.id ? { ...item, qty: payload.qty } : item
-        ),
+        checkout: { cart: [...state.cart], total: payload },
+        cart: [],
       };
-
     case DELETE_CART_ITEM:
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== payload),
       };
-    case CLEAR_CART:
+    case INIT_STATE:
       return initialState;
     default:
       return state;
@@ -65,12 +65,13 @@ export const addToCart = (product) => ({
   payload: product,
 });
 
-export const adaptQty = (id, val) => ({
-  type: ADAPT_QTY,
-  payload: {
-    id,
-    qty: val,
-  },
+export const checkout = (total) => ({
+  type: CHECKOUT,
+  payload: total,
+});
+
+export const handlePay = () => ({
+  type: HANDLE_PAY,
 });
 
 export const deleteCartItem = (id) => ({
@@ -78,8 +79,8 @@ export const deleteCartItem = (id) => ({
   payload: id,
 });
 
-export const clearCart = () => ({
-  type: CLEAR_CART,
+export const initState = () => ({
+  type: INIT_STATE,
 });
 
 export default cartReducer;

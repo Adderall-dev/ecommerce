@@ -9,6 +9,7 @@ import { GlobalStyle } from "./GlobalStyle";
 import { NavBar, MainApp, NavCart } from "./style";
 import { FaShoppingCart } from "react-icons/fa";
 import Checkout from "./components/Checkout";
+import FinishCheckout from "./components/FinishCheckout";
 
 const App = () => {
   const cartItems = useSelector((state) =>
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/shop" component={Shop} />
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
+          <Route path="/pay" component={FinishCheckout} />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </MainApp>

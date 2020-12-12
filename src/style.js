@@ -32,7 +32,7 @@ export const MainApp = styled.div`
 export const Btn = styled.button`
   a {
     text-decoration: none;
-    color: ${(props) => props.color || "#456268"};
+    color: ${(props) => props.color || "black"};
   }
   margin: 0.5em;
   padding: 0.8em;
@@ -86,6 +86,11 @@ export const SmCard = styled.div`
   padding: 2em;
   margin: 0.8em;
   border-radius: 2em;
+  @media (max-width: 768px) {
+    padding: 4em;
+    margin: 1em;
+    width: 70%;
+  }
 `;
 
 export const ShopSmCard = styled(SmCard)`

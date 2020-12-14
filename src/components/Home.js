@@ -1,15 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HomeWrapper, Btn } from "../style";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <HomeWrapper>
+      <h1>Time to order food</h1>
       <p>
-        This is a simple shop app, want to try it out? Let's{" "}
-        <Link to="/shop">shop</Link>:D{" "}
+        This is a simple shop app, want to try it out?
+        <Link to="/shop">
+          <Btn>Let's shop</Btn>
+        </Link>
       </p>
-    </div>
+    </HomeWrapper>
   );
 };
 

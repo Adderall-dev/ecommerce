@@ -23,6 +23,9 @@ const App = () => {
         <h1>
           Food<span>.now</span>
         </h1>
+        <h2>
+          F<span>.N</span>
+        </h2>
         <Link to="/">Home</Link>
         <Link to="/shop">Shop</Link>
         <Link to="/cart">

@@ -7,6 +7,7 @@ import { SmCard, Wrapper, LiItem, Btn } from "../style";
 const Checkout = () => {
   const checkoutItems = useSelector((state) => state.cartReducer.checkout);
   const dispatch = useDispatch();
+
   return (
     <Wrapper>
       <h1>Checkout</h1>
